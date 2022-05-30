@@ -8,6 +8,7 @@ import find from '@start/plugin-find'
 import read from '@start/plugin-read'
 import babel from '@start/plugin-lib-babel'
 import write from '@start/plugin-write'
+import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 
 const babelConfig = {
     // …
@@ -46,6 +47,9 @@ class App extends Component {
                     <div className="char__content">
                         <CharList onCharSelected={this.onCharSelected}/>
                         <CharInfo charId={this.state.selectedChar}/>
+                        <ErrorBoundary>
+                            <CharInfo charId={this.state.selectedChar}></CharInfo>
+                        </ErrorBoundary>
                     </div>
                     <img className="bg-decoration" src={decoration} alt="vision"/>
                 </main>
